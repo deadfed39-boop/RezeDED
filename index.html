@@ -1,27 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reze :D </title>
+</head>
 <body>
 
-<h1>Hello, how is your day?</h1>
-<button onclick="sendData()">See reze twerking</button>
+  <h1>Hello, how is your day?</h1>
 
-<script>
-async function sendData() {
-  await fetch("/send", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      platform: navigator.platform,
-      language: navigator.language
-    })
-  });
+  <button onclick="sendMessage()">See reze twerk</button>
 
-  alert("Dirty dirty");
-}
-</script>
+  <script src="script.js"></script>
 
 </body>
 </html>
-
